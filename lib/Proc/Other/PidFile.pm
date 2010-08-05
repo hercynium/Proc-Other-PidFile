@@ -1,5 +1,7 @@
 package Proc::Other::PidFile;
 
+# ABSTRACT: Manage the pid files of other processes
+
 use strict;
 use warnings;
 
