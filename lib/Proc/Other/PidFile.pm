@@ -1,9 +1,8 @@
 package Proc::Other::PidFile;
-
-# ABSTRACT: Manage the pid files of other processes
-
 use strict;
 use warnings;
+# ABSTRACT: Manage the pid files of other processes
+
 
 # Doing this 'cause all the alternatives on the cpan are made to
 #  deal with the pid file for the *current* process and make
@@ -68,12 +67,11 @@ sub new {
 #  and clobbers any existing pidfile.
 #   return true on success
 #   die on error
-sub write {
+sub write {                     ## no critic 
     my ( $self, $pid ) = @_;
 
-    my $pid_fh;  # oh, the things I do for good error messages :-/
-    eval { open $pid_fh, '>', $self->{fullpath} };
-    croak "Can't open '$self->{fullpath}' for writing: '$!'" if $@;
+    open my $pid_fh, '>', $self->{fullpath} or
+        croak "Can't open '$self->{fullpath}' for writing: '$!'";
 
     return print $pid_fh $pid;
 }
@@ -129,7 +127,7 @@ sub destroy {
 
 # Synonym for destroy...
 {
-    no strict 'refs';
+    no strict 'refs'; ## no critic (ProhibitNoStrict)
     *{"delete"} = \&destroy;
 }
 
@@ -180,9 +178,8 @@ sub pid {
     # even though my delusional brain tells me there are some other weird
     # formats used out there... I'll add support for those if anybody asks.
 
-    my $pid_fh;  # oh, the things I do for good error messages :-/
-    eval { open $pid_fh, '<', $self->{fullpath} };
-    croak "Can't open '$self->{fullpath}' for reading: '$!'" if $@;
+    open my $pid_fh, '<', $self->{fullpath} or
+        croak "Can't open '$self->{fullpath}' for reading: '$!'";
 
     my $pid_txt = do { local ( $/ ); <$pid_fh> };
 
