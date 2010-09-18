@@ -1,0 +1,19 @@
+NAME
+    Proc::Other::PidFile - Manage the pid files of other processes
+
+VERSION
+    version 0.002
+
+METHODS
+  new
+    Constructor... must write more soon.
+
+AUTHOR
+    Stephen R. Scaffidi <sscaffidi@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by Stephen R. Scaffidi.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
