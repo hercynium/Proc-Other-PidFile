@@ -1,6 +1,7 @@
-package Proc::Other::PidFile;
 use strict;
 use warnings;
+package Proc::Other::PidFile;
+
 # ABSTRACT: Manage the pid files of other processes
 
 
@@ -16,15 +17,18 @@ use warnings;
 #  * verify that the pid belongs to the program you specify
 #  * get in the kitchen and make you a pie (not really)
 
-our $VERSION = 0.001;
-
 use Carp;
 use autodie qw( :all );
+use English qw( -no_match_vars );
 use File::Temp qw( tempdir );
 use File::Basename qw( basename );
 use File::Spec::Functions qw( catfile tmpdir );
 
+=method new
 
+Constructor... must write more soon.
+
+=cut
 sub new {
     my ( $class, %args ) = @_;
 
